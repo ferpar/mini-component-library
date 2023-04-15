@@ -9,7 +9,9 @@ const ProgressBar = ({ value, size, width = 372 }) => {
   return (
     <Wrapper>
       <VisuallyHidden>{value}%</VisuallyHidden>
-      <span id="loadinglabel">{value}%</span>
+      <ValueSpan size={size} id="loadinglabel">
+        {value}%
+      </ValueSpan>
       <ProgressBarSpan
         role="progressbar"
         aria-valuenow={value}
@@ -18,7 +20,7 @@ const ProgressBar = ({ value, size, width = 372 }) => {
         width={width}
       >
         <ProgressBarSvg width={width} size={size}>
-          <Rail />
+          <Rail size={size} />
           <Fill width={width} value={value} size={size} />
         </ProgressBarSvg>
       </ProgressBarSpan>
@@ -27,9 +29,20 @@ const ProgressBar = ({ value, size, width = 372 }) => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 32px;
+  position: relative;
+`;
+
+const ValueSpan = styled.span`
+  position: relative;
+  top: ${({ size }) => (size === "large" ? "5px" : "0")}};
+`;
+
+const ProgressBarSpan = styled.span`
+  position: absolute;
+  top: 0;
+  left: 100px;
+  display: inline-block;
+  width: ${({ width }) => width}px;
 `;
 
 const ProgressBarSvg = styled.svg`
@@ -39,17 +52,14 @@ const ProgressBarSvg = styled.svg`
     size === "large" ? "24px" : size === "small" ? "8px" : "12px"};
 `;
 
-const ProgressBarSpan = styled.span`
-  display: inline-block;
-  width: ${({ width }) => width}px;
-`;
-
 const Rail = styled.rect`
   width: inherit;
   height: 100%;
   fill: ${COLORS.transparentGray15};
   rx: 4px;
   ry: 4px;
+  height: ${({ size }) =>
+    size === "large" ? "24px" : size === "small" ? "8px" : "12px"};
 `;
 
 const Fill = styled.rect`
