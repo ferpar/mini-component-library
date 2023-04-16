@@ -54,6 +54,10 @@ const IconInput = ({
 const Wrapper = styled.label`
   position: relative;
   display: block;
+  color: ${COLORS.gray700};
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -63,13 +67,12 @@ const IconWrapper = styled.div`
   margin: auto;
   height: var(--icon-size);
   width: var(--icon-size);
-  olor: ${COLORS.gray500};
 `;
 
 const TextInput = styled.input`
   border: none;
   border-bottom: 1px solid ${COLORS.black};
-  color: ${COLORS.gray700};
+  color: inherit;
   font-weight: 700;
   font-size: var(--font-size);
   line-height: var(--line-height);
@@ -77,7 +80,6 @@ const TextInput = styled.input`
   width: ${(props) => props.width}px;
   outline-offset: 2px;
   &:hover {
-    color: ${COLORS.black};
     border-bottom: 2px solid ${COLORS.black};
   }
   &:focus {
