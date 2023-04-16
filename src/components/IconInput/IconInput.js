@@ -6,7 +6,14 @@ import { COLORS } from "../../constants";
 import Icon from "../Icon";
 import VisuallyHidden from "../VisuallyHidden";
 
-const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
+const IconInput = ({
+  label,
+  icon,
+  width = 250,
+  size,
+  placeholder,
+  ...delegated
+}) => {
   const styles = React.useMemo(
     () => ({
       small: {
@@ -33,7 +40,12 @@ const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
       <IconWrapper>
         <Icon id={icon} size={style["--icon-size"]} />
       </IconWrapper>
-      <TextInput type="text" placeholder={placeholder} width={width} />
+      <TextInput
+        type="text"
+        placeholder={placeholder}
+        width={width}
+        {...delegated}
+      />
       <VisuallyHidden>{label}</VisuallyHidden>
     </Wrapper>
   );
