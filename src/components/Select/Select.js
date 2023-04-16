@@ -39,6 +39,7 @@ const PresentationalBit = styled.div`
   background-color: ${COLORS.transparentGray15};
   border-radius: 4px;
   color: ${COLORS.gray700};
+  font-family: "Roboto", sans-serif;
   height: 43px;
   padding-top: 8px;
   ${NativeSelect}:focus + & {
