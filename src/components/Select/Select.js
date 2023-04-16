@@ -15,7 +15,7 @@ const Select = ({ label, value, onChange, children }) => {
       </NativeSelect>
       <PresentationalBit>
         <OptionText>{displayedValue}</OptionText>
-        <ChevronIcon id="chevron-down" strokeWidth={1} size={24} />
+        <ChevronIcon id="chevron-down" strokeWidth={2} size={24} />
       </PresentationalBit>
     </Wrapper>
   );
@@ -38,20 +38,29 @@ const NativeSelect = styled.select`
 const PresentationalBit = styled.div`
   background-color: ${COLORS.transparentGray15};
   border-radius: 4px;
-  padding: 12px 16px;
+  color: ${COLORS.gray700};
+  height: 43px;
+  padding-top: 8px;
+  ${NativeSelect}:focus + & {
+    outline: 1px solid ${COLORS.primary};
+  }
+  ${NativeSelect}:hover + & {
+    color: ${COLORS.black};
+  }
 `;
 
 const OptionText = styled.span`
-  color: ${COLORS.gray700};
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.2;
   vertical-align: super;
+  margin-left: 16px;
+  margin-right: 24px;
 `;
 
 const ChevronIcon = styled(Icon)`
   display: inline-block;
-  color: ${COLORS.gray700};
+  margin-right: 18px;
 `;
 
 export default Select;
