@@ -84,6 +84,10 @@ const TextInput = styled.input`
     outline: 1px dotted #212121;
     outline: 5px auto -webkit-focus-ring-color;
   }
+  &::placeholder {
+    font-weight: 400;
+    color: ${COLORS.gray500};
+  }
 `;
 
 export default IconInput;
